@@ -1,28 +1,22 @@
-var wa = require('@open-wa/wa-automate');
-async function main() {
-    var client = await wa.create({
-        sessionId: "azkauserbot",
-        multiDevice: true,
-        authTimeout: 60,
-        blockCrashLogs: true,
-        disableSpins: true,
-        headless: true,
-        hostNotificationLang: 'PT_BR',
-        logConsole: false,
-        popup: true,
-        qrTimeout: 0,
+var makeWASocket = require('@adiwajshing/baileys');
+
+async function connectToWhatsApp() {
+    const sock = makeWASocket.default({
+        // can provide additional config here
+        printQRInTerminal: true
     });
+    sock.ev.on('connection.update', (update) => {
+        const { connection, lastDisconnect } = update
+        if (connection === 'close') {
+            connectToWhatsApp();
 
-    client.onAnyMessage(async function (update) {
-
-        if (update["text"]) {
-            if (update["text"] == "/start"){
-            return await client.sendText(update["chatId"], "Bot run normal");
-            }
+        } else if (connection === 'open') {
+            console.log('opened connection')
         }
     })
-
-
+    sock.ev.on('messages.upsert', async function (update) {
+        console.log(update);
+    });
 }
-
-main();
+// run in main file
+connectToWhatsApp()
