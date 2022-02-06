@@ -1,6 +1,6 @@
 {
   "name": "azka-userbot-whatsapp",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/azkadev/azka-userbot-whatsapp#readme",
   "dependencies": {
-    "whatsapp_client": "^0.0.0"
+    "whatsapp_client": "^0.0.1"
   }
 }
