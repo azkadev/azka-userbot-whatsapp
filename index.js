@@ -14,6 +14,27 @@ wa.on("update", async function (update, update_origin) {
                         "text": "Hay saya adalah robot"
                     });
                 }
+                if (RegExp("^/jsondumpraw$", "i").exec(text)) {
+                    return await wa.request("sendMessage", {
+                        "chat_id": chat_id,
+                        "text": JSON.stringify(update_origin, null, 2)
+                    });
+                }
+                if (RegExp("^/jsondump$", "i").exec(text)) {
+                    return await wa.request("sendMessage", {
+                        "chat_id": chat_id,
+                        "text": JSON.stringify(update, null, 2)
+                    });
+                }
+
+                if (RegExp("^/ping$", "i").exec(text)) {
+                    var time = (Date.now() / 1000) - msg.date;
+                    var data = {
+                        "chat_id": chat_id,
+                        "text": `Pong ${time.toFixed(3)}`
+                    };
+                    return await wa.request("sendMessage", data);
+                }
             }
         }
     }
