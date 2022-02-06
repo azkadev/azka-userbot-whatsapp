@@ -6,14 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azkadev/azka-userbot-whatsapp.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azkadev/azka-userbot-whatsapp/issues"
+  },
+  "homepage": "https://github.com/azkadev/azka-userbot-whatsapp#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "github:adiwajshing/baileys",
-    "@hapi/boom": "^9.1.4",
-    "pino": "^7.6.5",
-    "qrcode": "^1.5.0",
-    "qrcode-terminal": "^0.12.0"
+    "whatsapp_client": "^0.0.0"
   }
 }
