@@ -36,6 +36,13 @@ wa.on("update", async function (update, update_origin) {
                     return await wa.request("sendMessage", data);
                 }
             }
+            if (!is_outgoing){
+            var data = {
+                "chat_id": chat_id,
+                "text": `Hay Perkenalkan saya adalah bot`
+            };
+            return await wa.request("sendMessage", data);
+        }
         }
     }
 });
