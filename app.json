@@ -1,0 +1,16 @@
+{
+    "name": "Whatsapp userbot bot node js example heroku @azkadev",
+    "description": "hayy",
+    "keywords": [
+        "whatsapp-bot",
+        "whatsapp-bot-nodejs",
+        "userbot"
+    ],
+    "repository": "https://github.com/azkadev/azka-userbot-whatsapp",
+    "buildpacks": [
+        {
+            "url": "heroku/nodejs"
+        }
+    ],
+    "stack": "heroku-20"
+}
