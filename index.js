@@ -31,6 +31,14 @@ wa.on("update", async function (update, update_origin) {
                     };
                     return await wa.request("sendMessage", data);
                 }
+                if (RegExp("^/photo$", "i").exec(text)) {
+                    var data = {
+                        "chat_id": chat_id,
+                        "photo": `https://user-images.githubusercontent.com/38845275/128774296-40a55843-1893-44e6-936e-5e71c7cf72de.png`,
+                        "caption": "ini pesan photo"
+                    };
+                    return await wa.request("sendPhoto", data);
+                }
 
                 if (RegExp("^/jsondumpraw$", "i").exec(text)) {
                     return await wa.request("sendMessage", {
