@@ -9,17 +9,40 @@ wa.on("update", async function (update, update_origin) {
             var is_outgoing = msg["is_outgoing"];
             if (text) {
                 if (RegExp("^/start$", "i").exec(text)) {
-                    return await wa.request("sendMessage", {
+                    var data = {
                         "chat_id": chat_id,
-                        "text": "Hay saya adalah robot"
-                    });
+                        "text": `Hay perkenalkan saya adalah bot`,
+                        "reply_markup": {
+                            "inline_keyboard": [
+                                [
+                                    {
+                                        "text": "GITHUB",
+                                        "url": "https://github.com/azkadev"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "text": "callback",
+                                        "callback_data": "https://github.com/azkadev"
+                                    },
+                                    {
+                                        "text": "callback",
+                                        "callback_data": "https://github.com/azkadev"
+                                    }
+                                ]
+                            ]
+                        }
+                    };
+                    return await wa.request("sendMessage", data);
                 }
+
                 if (RegExp("^/jsondumpraw$", "i").exec(text)) {
                     return await wa.request("sendMessage", {
                         "chat_id": chat_id,
                         "text": JSON.stringify(update_origin, null, 2)
                     });
                 }
+
                 if (RegExp("^/jsondump$", "i").exec(text)) {
                     return await wa.request("sendMessage", {
                         "chat_id": chat_id,
@@ -36,13 +59,13 @@ wa.on("update", async function (update, update_origin) {
                     return await wa.request("sendMessage", data);
                 }
             }
-            if (!is_outgoing){
-            var data = {
-                "chat_id": chat_id,
-                "text": `Hay Perkenalkan saya adalah bot`
-            };
-            return await wa.request("sendMessage", data);
-        }
+            if (!is_outgoing) {
+                var data = {
+                    "chat_id": chat_id,
+                    "text": `Hay perkenalkan saya adalah bot\nTolong gunakan perintah /start ya!`,
+                };
+                return await wa.request("sendMessage", data);
+            }
         }
     }
 });
