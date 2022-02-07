@@ -23,11 +23,7 @@ wa.on("update", async function (update, update_origin) {
                                 [
                                     {
                                         "text": "callback",
-                                        "callback_data": "https://github.com/azkadev"
-                                    },
-                                    {
-                                        "text": "callback",
-                                        "callback_data": "https://github.com/azkadev"
+                                        "callback_data": "callback"
                                     }
                                 ]
                             ]
